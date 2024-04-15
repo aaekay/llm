@@ -1,1 +1,11 @@
 *.pth
+*.gguf
+/llama-2-7b
+/llama-2-13b
+/llama-2-70b
+/llama*
+*.chk
+*.model
+/LICENSE
+/USE_POLICY.md
+/hf
