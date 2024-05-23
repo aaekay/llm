@@ -9,3 +9,6 @@
 /LICENSE
 /USE_POLICY.md
 /hf
+/reports
+*.out
+/Meta-Llama-3-8B-Instruct
