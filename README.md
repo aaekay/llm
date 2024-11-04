@@ -1,8 +1,11 @@
 # LLM
 Use of llm in various medical tasks
 1. Extracting ground truths from reports
+2. Quality assessment of extracted ground truth'
 
-## two ways to run llama
+
+
+## Two ways to run llama hardware
 1. cpu - https://github.com/abetlen/llama-cpp-python
 2. gpu
 
