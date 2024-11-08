@@ -1,7 +1,33 @@
 # LLM
 Use of llm in various medical tasks
 1. Extracting ground truths from reports
-2. Quality assessment of extracted ground truth'
+2. Quality assessment of extracted ground truth see this ![notebook](/notebooks/quality_assesmment.ipynb)
+
+## Different ways to run Llama 3
+1. using hugging face pipeline
+2. downloading weights directly from meta
+
+
+### How to use hugging face?
+1. Sign up on hugging face
+2. Go to meta llama repositories
+3. complete the mandatory form, wait for approval
+4. install git lfs (sudo apt install git-lfs)
+5. now download llama repository from huggingface like one do for github
+5. make conda environment as mentioned below
+```
+conda create -n llm
+conda activate llm
+conda install pytorch torchvision torchaudio pytorch-cuda=11.8 -c pytorch -c nvidia
+pip install -r requirements.txt
+
+```
+
+## Set up a llama server
+One should always set up a llama server, so that flow of information is easy
+1. Run this script using screen so that a llama server is running in background
+`python llama_server.py`
+2. API que
 
 
 
@@ -9,7 +35,7 @@ Use of llm in various medical tasks
 1. cpu - https://github.com/abetlen/llama-cpp-python
 2. gpu
 
-## Making environments
+## Making environments when not using hugging face
 ```
 conda create -n llm
 conda activate llm
@@ -32,3 +58,7 @@ torchrun --nproc_per_node 1 example_chat_completion.py \
     --tokenizer_path Meta-Llama-3-8B-Instruct/tokenizer.model \
     --max_seq_len 512 --max_batch_size 6
 ```
+
+
+### To do
+- [ ] 
