@@ -12,3 +12,6 @@
 /reports
 *.out
 /Meta-Llama-3-8B-Instruct
+/dataset/*
+*.pyc
+*.log

@@ -25,9 +25,10 @@ pip install -r requirements.txt
 
 ## Set up a llama server
 One should always set up a llama server, so that flow of information is easy
-1. Run this script using screen so that a llama server is running in background
-`python llama_server.py`
-2. API que
+1. Run this script using screen so that a llama server is running in background. All the server script are contained in a folder: server_scripts
+`fastapi run server_3.1.py`
+2. Now, a server url will be exposes that can be used as API like https://0.0.0.0:8000
+3. You can run your main script or a jupyter notebook 
 
 
 
@@ -60,5 +61,15 @@ torchrun --nproc_per_node 1 example_chat_completion.py \
 ```
 
 
+### Now different experiments
+
+| Sr No. | Experiment Name | Notebook link |
+| ------ | --------------- | ------------- |
+| 1      | Classification of musculoskeletal fracture using vlm like llama 3.2, chatgpt, grok2 | ---- |
+
+
 ### To do
-- [ ] 
+- [x] Add server scripts for llama 3.1
+- [ ] Add server scripts for llama 3.2
+- [ ] Add M42 medical LLM expermient
+- [ ] Create a benchmark dataset of report classification
