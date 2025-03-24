@@ -1,2 +1,5 @@
+tqdm
+fastapi[standard]
+pandas
 transformers
 protobuf

@@ -14,14 +14,25 @@ Use of llm in various medical tasks
 3. complete the mandatory form, wait for approval
 4. install git lfs (sudo apt install git-lfs)
 5. now download llama repository from huggingface like one do for github
-5. make conda environment as mentioned below
+6. Download and install miniconda from here:
 ```
-conda create -n llm
+wget https://repo.anaconda.com/miniconda/Miniconda3-latest-Linux-x86_64.sh
+bash ./Miniconda3-latest-Linux-x86_64.sh -b
+~/miniconda3/bin/conda init
+source ~/.bashrc
+```
+7. make conda environment as mentioned below
+```
+conda create -n llm python=3.9
 conda activate llm
-conda install pytorch torchvision torchaudio pytorch-cuda=11.8 -c pytorch -c nvidia
+conda install pytorch torchvision torchaudio pytorch-cuda=12.4 -c pytorch -c nvidia
 pip install -r requirements.txt
 
 ```
+
+
+## Use Deepseek trained LaLama 3.1
+
 
 ## Set up a llama server
 One should always set up a llama server, so that flow of information is easy
