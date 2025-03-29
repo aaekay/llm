@@ -16,19 +16,15 @@ logging.basicConfig(filename="server.log", encoding='utf-8', level=logging.DEBUG
 
 pipeline = transformers.pipeline(
     "text-generation",
-    model="/home/aaekay/llm/3.1_8Bf/",
+    model="../Llama-3.1-8B-Instruct/",
     model_kwargs={"torch_dtype": torch.bfloat16},
     device="cuda",
     )
 app = FastAPI()
-class Args:
- # Set your default or dynamic prompt
-    tokens = 250  # Adjust based on your needs
 
-args = Args()
 
 # The function used to generate outputs (client function logic)
-def client(impression):
+def client(impression, token):
     try:
         # Dynamically execute based on the prompt
         messages = impression
@@ -49,7 +45,7 @@ def client(impression):
         # Generate output using the pipeline
         outputs = pipeline(
             prompt,
-            max_new_tokens=args.tokens,
+            max_new_tokens=token,
             eos_token_id=terminators,
             do_sample=True,
             temperature=0.1,
@@ -71,6 +67,7 @@ except:
     print("model load failed")
 class ImpressionRequest(BaseModel):
     impression: List
+    token: int
 
 # Define the FastAPI endpoint
 @app.post("/generate/")
@@ -81,7 +78,7 @@ async def generate_text(impression_req: ImpressionRequest):
     """
     try:
         # Call the client function with the impression
-        generated_text = client(impression_req.impression)
+        generated_text = client(impression_req.impression, impression_req.token)
         return {"generated_text": generated_text}
     except Exception as e:
         raise HTTPException(status_code=500, detail=f"Error processing impression: {str(e)}")
