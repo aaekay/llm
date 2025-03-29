@@ -62,7 +62,7 @@ try:
     print(client([
         {"role": "system", "content": "You are an AI assistant whose role is to listen to the user"},
         {"role": "user", "content": "Write a poem in 50 words about star" },
-    ]))
+    ], 250))
 except:
     print("model load failed")
 class ImpressionRequest(BaseModel):
