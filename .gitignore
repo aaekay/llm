@@ -12,6 +12,8 @@
 /reports
 *.out
 /Meta-Llama-3-8B-Instruct
+/Llama-3.1-8B-Instruct
 /dataset/*
 *.pyc
 *.log
+/server_scripts/test.ipynb
