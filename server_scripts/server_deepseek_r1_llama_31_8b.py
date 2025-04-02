@@ -16,7 +16,7 @@ logging.basicConfig(filename="server.log", encoding='utf-8', level=logging.DEBUG
 
 pipeline = transformers.pipeline(
     "text-generation",
-    model="../DeepSeek-R1-Distill-Llama-8B/",
+    model="../models/DeepSeek-R1-Distill-Llama-8B/",
     model_kwargs={"torch_dtype": torch.bfloat16},
     device="cuda",
     )
