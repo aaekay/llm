@@ -11,8 +11,14 @@
 /hf
 /reports
 *.out
+
+# models
+/models
 /Meta-Llama-3-8B-Instruct
 /Llama-3.1-8B-Instruct
+/DeepSeek-R1-Distill-Llama-8B
+
+# datasets
 /dataset/*
 *.pyc
 *.log
