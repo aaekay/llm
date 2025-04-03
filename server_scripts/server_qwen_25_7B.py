@@ -16,7 +16,7 @@ logging.basicConfig(filename="server.log", encoding='utf-8', level=logging.DEBUG
 
 pipeline = transformers.pipeline(
     "text-generation",
-    model="../models/Llama-3.1-8B-Instruct/",
+    model="../models/Qwen2.5-7B-Instruct",
     model_kwargs={"torch_dtype": torch.bfloat16},
     device="cuda",
     )
@@ -28,32 +28,18 @@ def client(impression, token):
     try:
         # Dynamically execute based on the prompt
         messages = impression
-        
-        # Tokenize and apply chat template
-        prompt = pipeline.tokenizer.apply_chat_template(
-            messages,
-            tokenize=False,
-            add_generation_prompt=True
-        )
-
-        # Define terminators for output generation
-        terminators = [
-            pipeline.tokenizer.eos_token_id,
-            pipeline.tokenizer.convert_tokens_to_ids("<|eot_id|>")
-        ]
 
         # Generate output using the pipeline
         outputs = pipeline(
-            prompt,
+            messages,
             max_new_tokens=token,
-            eos_token_id=terminators,
             do_sample=True,
             temperature=0.1,
             top_p=0.9,
         )
 
         # Return the generated text excluding the prompt
-        return outputs[0]["generated_text"][len(prompt):]
+        return outputs[0]["generated_text"][-1]['content']
     
     except Exception as e:
         raise HTTPException(status_code=500, detail=str(e))
