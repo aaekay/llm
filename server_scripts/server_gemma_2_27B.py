@@ -18,7 +18,7 @@ pipeline = transformers.pipeline(
     "text-generation",
     model="../models/gemma-2-27b-it/",
     model_kwargs={"torch_dtype": torch.bfloat16},
-    device="auto",
+    device_map="auto",
     )
 app = FastAPI()
 
